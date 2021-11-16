@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>{% block title %}Waiter-bot{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=0.8">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+  {% block extrahead %}
+
+  {% endblock %}
+
+</head>
+
+
+<body>
+  <div class="navbar-plus-content">
+    {% block content %}
+    {{ content }}
+    {% endblock %}
+  </div>
+
+  {% block footer %}
+  <div id="footer"></div>
+  {% endblock %}
+</body>
+
+</html>
