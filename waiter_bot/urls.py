@@ -21,6 +21,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', include(('orders.urls', 'orders'), namespace='orders')),
     path('admin/', admin.site.urls),
+    path('cuenta/', include(('users.urls', 'users'), namespace='users')),
+    path('cuenta/', include('django.contrib.auth.urls')),
+    path('qr/', include(('qr_generator.urls', 'qr_generator'), namespace='qr_generator')),
 ]
 
 if settings.DEBUG:

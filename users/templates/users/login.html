@@ -1,0 +1,61 @@
+<!-- templates/signup.html -->
+{% extends 'base.html' %}
+
+{% block extrahead %}
+{% load static %}
+
+
+{% endblock %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div class="container-all-elements-signup">
+    <!--<a href=""><img src="{% static 'images/bienvenido.png' %}" alt=""></a>-->
+  </div>
+  <!--<span></span>-->
+  <div class="signup-container">
+    {% if form.non_field_errors  %}
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-warning">
+      <div class="">
+        {{error}}   
+      </div>
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    </div>
+    {%endfor%}
+    {% endif%}
+    <div class="signup-data-title">
+      <h2>Iniciar Sesión</h2>
+    </div>
+
+
+    <form method="post">
+      <div class="signup-data-elements-container">
+        {% csrf_token %}
+        <div class="signup-data-element">
+          <i class="fas fa-user"></i> <!-- <label for="{{ form.first_name.id_for_label }}">Nombre</label> -->
+          {{ form.username }}
+        </div>
+        <div class="signup-data-element">
+          <i class="fas fa-lock"></i>
+          <!-- <label for="{{ form.first_name.id_for_label }}">Nombre</label> -->
+          {{ form.password }}
+        </div>
+      </div>
+      <div class="signup-data-button">
+        <button type="submit">Entrar</button>
+        <a href="{% url 'password_reset'%}">Olvidé mi contraseña</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.getElementsByName('username')[0].placeholder = "Usuario";
+  document.getElementsByName('password')[0].placeholder = "Contraseña";
+
+</script>
+
+{% endblock %}

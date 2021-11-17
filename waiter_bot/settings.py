@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import moneyed
+from moneyed.localization import _FORMATTER
+from decimal import ROUND_HALF_EVEN
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +28,7 @@ SECRET_KEY = 'django-insecure-ztr7)^-x=cc!#i%twoyjj0g7g!m27!fk)841nn!xoo=!o09918
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -47,11 +50,13 @@ DEBUG_APPS = (
 )
 
 THIRD_PARTY_APPS = (
+    'djmoney',
 )
 
 LOCAL_APPS = (
     'qr_generator.apps.QrGeneratorConfig',
     'orders.apps.OrdersConfig',
+    'users.apps.UsersConfig',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -148,3 +153,28 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = "orders:lista_menus"
+LOGOUT_REDIRECT_URL = LOGIN_URL
+
+"""Django money config """
+
+# Solo se acepta la moneda chilena
+CURRENCIES = ('CLP',)
+
+# Se cambia el formato default de la moneda chilena de CLP$precio a $precio
+_FORMATTER.add_sign_definition(
+    'default',
+    moneyed.CLP,
+    prefix='$'
+)
+# Se cambia el formato de decimales de punto a coma 
+_FORMATTER.add_formatting_definition(
+    'es_cl',
+    group_size=3, group_separator=".", decimal_point=",",
+    positive_sign="",  trailing_positive_sign="",
+    negative_sign="-", trailing_negative_sign="",
+    rounding_method=ROUND_HALF_EVEN
+)
+""" fin django money config """

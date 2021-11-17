@@ -8,6 +8,38 @@
 
 {% block content %}
 
-<div>Menus</div>
+<h1>Generador QR de mesas</h1>
+
+<div>
+    {% for mesa in mesas %}
+    {% if mesa.ocupada %}
+    <div class="mesa-ocupada">
+        <span>{{mesa.numero}}</span>
+        <span>Ocupada</span>
+    </div>
+    {% else %}
+    <div class="mesa-desocupada">
+        <span>{{mesa.numero}}</span>
+        <span>Desocupada</span>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+
+
+<form method="POST">
+    {% csrf_token %}
+
+    <div>
+        {{form.cantidad_personas}}
+    </div>
+
+    <div style="margin: auto">
+        {{ svg|safe }}
+    </div>
+    <button>Generar QR</button>
+</form>
+
 
 {% endblock %}
