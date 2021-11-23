@@ -33,3 +33,10 @@ class Cliente(models.Model):
     mesa = models.ForeignKey('orders.Mesa', on_delete = models.CASCADE)
     session_key = models.CharField(max_length=32, null=True, blank=True)
     objects = models.Manager()
+
+# representa un pedido de una mesa
+class Pedido(models.Model):
+    plato = models.ForeignKey('orders.Menu', on_delete=models.CASCADE)
+    mesa = models.ForeignKey('orders.Mesa', on_delete=models.CASCADE)
+    cantidad = models.IntegerField(default=1)
+    objects = models.Manager()

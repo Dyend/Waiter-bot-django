@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block extrahead %}
+{%load static %}
+{% endblock %}
+
+
+
+{% block content %}
+<div>
+    <h1>Mesa asignada {{mesa}}</h1>
+</div>
+
+<a href="{% url 'qr_generator:qr_generator' %}">Volver</a>
+<div style="margin: auto">
+    {{ svg|safe }}
+</div>
+{% endblock %}

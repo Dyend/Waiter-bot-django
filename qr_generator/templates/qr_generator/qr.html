@@ -26,7 +26,9 @@
     {% endfor %}
 </div>
 
-
+<div>
+    <h1>Mesa asignada {{mesa}}</h1>
+</div>
 
 <form method="POST">
     {% csrf_token %}
@@ -34,10 +36,6 @@
     <div>
         <label for="">Cantidad personas: </label>
         {{form.cantidad_personas}}
-    </div>
-
-    <div style="margin: auto">
-        {{ svg|safe }}
     </div>
     <button>Generar QR</button>
 </form>

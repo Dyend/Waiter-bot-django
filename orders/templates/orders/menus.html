@@ -10,4 +10,74 @@
 
 <div>Menus</div>
 
+<div class="pedidos">
+    <div>
+        <span>Nombre</span>
+        <span>cantidad</span>
+        <span>precio unitario</span>
+        <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt=""
+            style="max-width: 100px;">
+    </div>
+    <span>total</span>
+    {% for pedido in pedidos%}
+    <div>
+        <span>Nombre</span>
+        <span>cantidad</span>
+        <span>precio unitario</span>
+        <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
+    </div>
+    {% endfor %}
+    <span>total</span>
+
+
+
+</div>
+
+
+<div class="menus">
+    {% for menu in menus %}
+    <div>
+        <span>Nombre</span>
+        <span>precio unitario</span>
+        <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam facere sunt blanditiis praesentium
+            delectus cum fuga molestias quod dolore nobis.</span>
+        <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
+
+        <a href="">Pedir</a>
+
+    </div>
+    {% endfor %}
+</div>
+
+<div class="chat">
+
+    <div class="mensajes">
+
+    </div>
+
+    <input type="text">
+
+</div>
+
+
+<script>
+    function loadForm() {
+        var btn = $(this);
+        $.ajax({
+            url: btn.attr("data-url"),
+            type: 'get',
+            dataType: 'json',
+            beforeSend: function () {
+                $("#modal-horario").addClass("show");
+                $(document.body).addClass("body-not-scroll");
+            },
+            success: function (data) {
+                setModalFormHandler(data);
+            }
+        });
+    };
+
+</script>
+
+
 {% endblock %}
