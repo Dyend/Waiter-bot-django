@@ -4,10 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
+Django = "*"
 django-debug-toolbar = "*"
 django-money = "*"
 qrcode = "*"
+pyjwt = "*"
 
 [dev-packages]
 

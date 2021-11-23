@@ -27,3 +27,9 @@ class Mesa(models.Model):
         return str(self.numero)
 
     objects = models.Manager()
+
+# Representa un cliente de una mesa
+class Cliente(models.Model):
+    mesa = models.ForeignKey('orders.Mesa', on_delete = models.CASCADE)
+    session_key = models.CharField(max_length=32, null=True, blank=True)
+    objects = models.Manager()

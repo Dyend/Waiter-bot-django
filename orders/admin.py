@@ -4,3 +4,4 @@ from .models import *
 
 admin.site.register(Mesa)
 admin.site.register(Menu)
+admin.site.register(Cliente)
