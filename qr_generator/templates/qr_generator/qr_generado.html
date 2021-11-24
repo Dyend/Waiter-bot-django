@@ -2,17 +2,22 @@
 
 {% block extrahead %}
 {%load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/tables_generator.css' %}">
 {% endblock %}
 
 
 
 {% block content %}
-<div>
-    <h1>Mesa asignada {{mesa}}</h1>
+
+<div class="contenedor-mesa-asignada">
+    <div>
+        <h1>Mesa asignada {{mesa}}</h1>
+    </div>
+    
+    <a href="{% url 'qr_generator:qr_generator' %}">Volver</a>
+    <div class="contenedor-qr">
+        {{ svg|safe }}
+    </div>
 </div>
 
-<a href="{% url 'qr_generator:qr_generator' %}">Volver</a>
-<div style="margin: auto">
-    {{ svg|safe }}
-</div>
 {% endblock %}

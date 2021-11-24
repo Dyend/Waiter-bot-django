@@ -2,43 +2,49 @@
 
 {% block extrahead %}
 {%load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/tables_generator.css' %}">
 {% endblock %}
 
 
 
 {% block content %}
-
-<h1>Generador QR de mesas</h1>
-
-<div>
-    {% for mesa in mesas %}
-    {% if mesa.ocupada %}
-    <div class="mesa-ocupada">
-        <span>{{mesa.numero}}</span>
-        <span>Ocupada</span>
+<div class="contendor-principal-mesas-qr">
+    <div class="contenedor-generador-qr">
+        <h1>Generador QR de mesas</h1>
+        <div class="contendor-mesas">
+            {% for mesa in mesas %}
+            {% if mesa.ocupada %}
+            <div class="mesa-ocupada">
+                <span>{{mesa.numero}}</span>
+                <span>Ocupada</span>
+            </div>
+            {% else %}
+            <div class="mesa-desocupada">
+                <span>{{mesa.numero}}</span>
+                <span>Desocupada</span>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        
+        <div>
+            <h1>Mesa asignada {{mesa}}</h1>
+        </div>
+        
+        <form method="POST" class="contenedor-formulario">
+            {% csrf_token %}
+        
+            <div class="contenedor-cantidad-personas">
+                <label for="">Número de personas</label>
+                {{form.cantidad_personas}}
+            </div>
+            <button>Generar QR</button>
+        </form>
     </div>
-    {% else %}
-    <div class="mesa-desocupada">
-        <span>{{mesa.numero}}</span>
-        <span>Desocupada</span>
-    </div>
-    {% endif %}
-    {% endfor %}
 </div>
 
-<div>
-    <h1>Mesa asignada {{mesa}}</h1>
-</div>
 
-<form method="POST">
-    {% csrf_token %}
 
-    <div>
-        <label for="">Cantidad personas: </label>
-        {{form.cantidad_personas}}
-    </div>
-    <button>Generar QR</button>
-</form>
 
 
 {% endblock %}
