@@ -155,7 +155,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'users:login'
-LOGIN_REDIRECT_URL = "orders:lista_menus"
+LOGIN_REDIRECT_URL = "qr_generator:qr_generator"
 LOGOUT_REDIRECT_URL = LOGIN_URL
 
 """Django money config """
