@@ -29,7 +29,7 @@ def qr_generator(request):
                 factory = qrcode.image.svg.SvgImage
                 token = jwt.encode({"exp": datetime.now(timezone.utc) + timedelta(minutes=5), "numero_mesa": mesa.numero}, SECRET_KEY, algorithm="HS256")
                 url = request.build_absolute_uri(reverse('qr_generator:reservar_mesa', kwargs={'token':token}))
-                img = qrcode.make(url, image_factory=factory, box_size=20)
+                img = qrcode.make(url, image_factory=factory, box_size=10)
                 stream = BytesIO()
                 img.save(stream)
                 context["svg"] = stream.getvalue().decode()
