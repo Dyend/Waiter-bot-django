@@ -10,14 +10,14 @@
 {% block content %}
 
 <div class="contenedor-mesa-asignada">
-    <div>
-        <h1>Mesa asignada {{mesa}}</h1>
-    </div>
-    
-    <a href="{% url 'qr_generator:qr_generator' %}">Volver</a>
+    <h1>Mesa {{mesa}} asignada </h1>
     <div class="contenedor-qr">
         {{ svg|safe }}
     </div>
+    <div class="boton-volver-mesa-asignada">
+        <a href="{% url 'qr_generator:qr_generator' %}">Volver</a>
+    </div>
+    
 </div>
 
 {% endblock %}
