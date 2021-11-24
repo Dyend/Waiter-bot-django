@@ -12,8 +12,8 @@
 
 <div class="container-all-elements-signup">
     <!--<a href=""><img src="{% static 'images/bienvenido.png' %}" alt=""></a>-->
-  </div>
   <!--<span></span>-->
+  <img src="{% static 'images/nazca-logo.jpeg' %}" alt="">
   <div class="signup-container">
     {% if form.non_field_errors  %}
     {% for error in form.non_field_errors %}
@@ -34,11 +34,11 @@
       <div class="signup-data-elements-container">
         {% csrf_token %}
         <div class="signup-data-element">
-          <i class="fas fa-user"></i> <!-- <label for="{{ form.first_name.id_for_label }}">Nombre</label> -->
+<!-- <label for="{{ form.first_name.id_for_label }}">Nombre</label> -->
           {{ form.username }}
         </div>
         <div class="signup-data-element">
-          <i class="fas fa-lock"></i>
+        
           <!-- <label for="{{ form.first_name.id_for_label }}">Nombre</label> -->
           {{ form.password }}
         </div>

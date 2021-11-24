@@ -1,3 +1,74 @@
+
 .container-all-elements-signup{
-    background-color: red;
+    background-color: #ff2525;
+    background-image: linear-gradient(146deg, #ff2525 17%, #e2c8c8 38%, #ff2525 82%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.container-all-elements-signup img{
+    width: 150px;
+    padding: 50px 0;
+}
+
+.container-all-elements-signup h2{
+    padding-bottom: 10px;
+    color: #fff;
+}
+
+.signup-container{
+    width: 550px;
+}
+
+@media(max-width:767px){
+    .signup-container{
+        width: 100%;
+    }
+}
+
+.signup-data-element + .signup-data-element{
+    margin-top: 20px;
+}
+.signup-data-element input{
+    height:40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: calc(100% - 5px);
+    padding-left: 5px;
+}
+
+.signup-data-element input::placeholder{
+    font-size: 10px;
+    color: #777;
+    opacity: 0.6;
+}
+.signup-data-element input::target-text{
+    padding-left: 10px;
+}
+
+.signup-data-button{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.signup-data-button button{
+    background: transparent;
+    border:2px solid #fff;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 25px;
+    padding:10px 15px
+}
+.signup-data-button a{
+    color: #fff;
+    text-align: center;
+    margin-top: 25px;
+    font-size: 12px;
 }
