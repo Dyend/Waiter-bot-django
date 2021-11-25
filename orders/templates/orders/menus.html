@@ -2,63 +2,83 @@
 
 {% block extrahead %}
 {%load static %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/menus.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/lightslider.css' %}" /> 
+    <script src="{% static 'javascript/lightslider.js' %}"></script>
 {% endblock %}
 
-
-
 {% block content %}
-
-<div>Menus</div>
-
-<div class="pedidos">
-    <div>
-        <span>Nombre</span>
-        <span>cantidad</span>
-        <span>precio unitario</span>
-        <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt=""
-            style="max-width: 100px;">
+<div class="contenedor-principal-menus">
+    <div class="contenedor-titulo">
+        <h1>Menus</h1>
+        <i class="fas fa-arrow-right"></i>
     </div>
-    <span>total</span>
-    {% for pedido in pedidos%}
-    <div>
-        <span>Nombre</span>
-        <span>cantidad</span>
-        <span>precio unitario</span>
-        <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
+    <div class="contenedor-pedidos" id="adaptive">
+        <div class="contenedor-pedido">
+            <div class="informacion-pedido">
+                <p>Lomo Saltado</p>
+                <p>Precio: $14.990</p>
+                <a>Agregar</a>
+            </div>
+            <div class="contenedor-imagen">
+                <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
+            </div>
+        </div>
+        
+
+        <!-- {% for pedido in pedidos%}
+        <div class="contenedor-pedido">
+            <div class="informacion-pedido">
+                <p>Nombre</p>
+                <p>cantidad</p>
+                <p>precio unitario</p>
+            </div>
+            <div class="contenedor-imagen">
+                <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
+            </div>
+        </div>
+        {% endfor %} -->
+        
     </div>
-    {% endfor %}
-    <span>total</span>
+    <!-- <div class="contenedor-titulo-platos-pedidos">
+        <h1>Platos Seleccionados</h1>
+        <p>Total: $19.990</p>
+    </div>
+    <div class="menus">
+        {% for menu in menus %}
+        <div>
+            <p>Nombre</p>
+            <p>precio unitario</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam facere sunt blanditiis praesentium
+                delectus cum fuga molestias quod dolore nobis.</p>
+            <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
+            <a href="">Pedir</a>
+        </div>
+        {% endfor %}
+    </div> -->
 
-
-
+    <div class="contenedor-titulo-platos-pedidos">
+        <h1>Platos Seleccionados</h1>
+        <p>Total: $19.990</p>
+    </div>
+    <div class="menus">
+        <div>
+            <p>Nombre</p>
+            <p>precio unitario</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam facere sunt blanditiis praesentium
+                delectus cum fuga molestias quod dolore nobis.</p>
+            <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
+            <a href="">Pedir</a>
+        </div>
+       
+    </div>
+    
+    <div class="chat">
+        <div class="mensajes">
+        </div>
+        </input type="text">
+    </div>
 </div>
-
-
-<div class="menus">
-    {% for menu in menus %}
-    <div>
-        <span>Nombre</span>
-        <span>precio unitario</span>
-        <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam facere sunt blanditiis praesentium
-            delectus cum fuga molestias quod dolore nobis.</span>
-        <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
-
-        <a href="">Pedir</a>
-
-    </div>
-    {% endfor %}
-</div>
-
-<div class="chat">
-
-    <div class="mensajes">
-
-    </div>
-
-    <input type="text">
-
-</div>
-
 
 <script>
     function loadForm() {
@@ -76,8 +96,23 @@
             }
         });
     };
-
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#adaptive').lightSlider({
+            adaptiveHeight:true,
+            item:1,
+            slideMargin:20,
+            loop:true,
+            enableDrag:false
+        });
+    });
+    </script>
+
+
+
+
 
 
 {% endblock %}
