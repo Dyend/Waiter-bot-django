@@ -114,7 +114,7 @@
             <p>
                 Te recomiendo el siguiente plato
             </p>
-            <a href="">Ver plato</a>
+            <a onclick="handleOpenModal()">Ver plato</a>
         </div>
     </div>
     <div class="contenedor-input-boton">
@@ -123,6 +123,25 @@
     </div>
     
     
+</div>
+
+<div class="contendor-modal">
+    <div class="cuerpo-modal">
+        <div class="contenedor-imagen">
+            <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
+        </div>
+        <div class="informacion-pedido pedido-modal">
+            <h3>Lomo Saltado</h6>
+            <p class="precio">Precio: $14.990</p>
+            <p class="ingredientes">ingredientes: Carne, Papas Fritas, Cebolla Morada, Ajo, Sal, Arroz y Choclo Peruano</p>
+            <p class="descripcion-plato">Descripción: Exquisito plato típico Peruano, preparado con el mejor lomo del mercado. La mezcla de la carne con la cebolla morada y el ajo le da un toque único, clásico de la cocina del Perú</p>
+            <div class="botones-modal">
+                <a>Agregar</a>
+                <a onclick="handleOpenModal()">Salir</a>
+            </div>
+        </div>
+        
+    </div>
 </div>
 
 <script>
@@ -152,6 +171,10 @@
         var flip = 0;
         $(".contenedor-principal-chat").toggle();
         $(".boton-chat").toggle("slow");
+    }
+    function handleOpenModal(){
+        $(".contendor-modal").toggle("fast");
+        $(".contenedor-principal-chat").toggle("fast");
     }
 
 </script>

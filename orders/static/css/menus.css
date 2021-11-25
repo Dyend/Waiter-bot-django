@@ -234,3 +234,65 @@
     margin-left: 10px;
     color: #fff;
 }
+
+.contendor-modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 9999999;
+}
+
+.cuerpo-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: #fff;
+    width: calc(100% - 80px);
+    height: 440px;
+    left: 20px;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+}
+
+.pedido-modal{
+    text-align: center;
+    color: #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.precio{
+    font-size: 16px;
+    color: #555;
+}
+
+.ingredientes,.descripcion-plato{
+    font-size: 14px;
+    color: #555;
+}
+
+.botones-modal{
+    display:flex;
+    gap: 40px;
+}
+
+.botones-modal a{
+    width: 100px;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 25px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 15px;
+}
