@@ -57,7 +57,7 @@
         {% endfor %}
     </div> -->
 
-    <div class="contenedor-titulo-platos-pedidos">
+    <!-- <div class="contenedor-titulo-platos-pedidos">
         <h1>Platos Seleccionados</h1>
         <p>Total: $19.990</p>
     </div>
@@ -71,13 +71,58 @@
             <a href="">Pedir</a>
         </div>
        
+    </div> -->
+</div>
+
+<div class="boton-chat" onclick="chatOpenHandler(this)">
+</div>
+
+<div class="contenedor-principal-chat" >
+    <i class="fas fa-times-circle boton-cerrar" onclick="chatCloseHandler(this)"></i>
+    <div class="mensajes">
+        <div class="mensaje-instrucciones">
+            <p>
+                Bienvenido a "Lineas de Nazca", para pedir ingresa tus ingredientes favoritos separados por una coma. Ejemplo: carne, pimienta, papas, etc...
+            </p>
+        </div>
+        <div class="mensaje-usuario">
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae dolorum corporis eos rem assumenda reprehenderit sequi soluta eaque architecto veritatis optio et dolor nemo veniam aliquam, libero molestiae. At, ullam.
+            </p>
+        </div>
+        <div class="mensaje-usuario">
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae dolorum corporis eos rem assumenda reprehenderit sequi soluta eaque architecto veritatis optio et dolor nemo veniam aliquam, libero molestiae. At, ullam.
+            </p>
+        </div>
+        <div class="mensaje-bot">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos vero eligendi expedita similique beatae dicta ratione sapiente consequatur? Esse dolorem laborum laudantium tenetur, necessitatibus ut maiores reiciendis recusandae fugiat tempore!
+            </p>
+        </div>
+        <div class="mensaje-usuario">
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae dolorum corporis eos rem assumenda reprehenderit sequi soluta eaque architecto veritatis optio et dolor nemo veniam aliquam, libero molestiae. At, ullam.
+            </p>
+        </div>
+        <div class="mensaje-bot">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos vero eligendi expedita similique beatae dicta ratione sapiente consequatur? Esse dolorem laborum laudantium tenetur, necessitatibus ut maiores reiciendis recusandae fugiat tempore!
+            </p>
+        </div>
+        <div class="mensaje-recomendacion">
+            <p>
+                Te recomiendo el siguiente plato
+            </p>
+            <a href="">Ver plato</a>
+        </div>
+    </div>
+    <div class="contenedor-input-boton">
+        <input type="text" name="" id="" placeholder="Ingresa un mensaje">
+        <i class="fas fa-play"></i>
     </div>
     
-    <div class="chat">
-        <div class="mensajes">
-        </div>
-        </input type="text">
-    </div>
+    
 </div>
 
 <script>
@@ -96,7 +141,21 @@
             }
         });
     };
+
+    function chatOpenHandler(e){
+        var flip = 0;
+        $(e).toggle();
+        $(".contenedor-principal-chat").toggle("slow");
+    }
+
+    function chatCloseHandler(e){
+        var flip = 0;
+        $(".contenedor-principal-chat").toggle();
+        $(".boton-chat").toggle("slow");
+    }
+
 </script>
+
 
 <script type="text/javascript">
     $(document).ready(function() {

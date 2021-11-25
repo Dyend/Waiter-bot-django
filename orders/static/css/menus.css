@@ -104,3 +104,133 @@
 .contenedor-titulo-platos-pedidos h1{
     line-height: 35px;
 }
+
+/* ESTILOS PARA CHAT */
+.boton-chat{
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 80px;
+    height: 80px;
+    background-color: orange;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+.contenedor-principal-chat{
+    position: fixed;
+    display: none;
+    height: 440px;
+    width: 300px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+    background-color: orange;
+    border-radius: 5px;
+    z-index: 99999;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.15);
+    padding-bottom: 0;
+}
+
+@media(max-width:767px){
+    .contenedor-principal-chat{
+        width: calc(100% - 60px);
+        right: 30px;
+    }
+}
+.boton-cerrar{
+    font-size: 30px;
+    position: absolute;
+    cursor: pointer;
+    color: #fff;
+    top: 5px;
+    right: 8px;
+}
+.mensajes{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    height: 342px;
+    margin: 0 auto;
+    margin-top: 40px;
+    overflow-y: scroll;
+    padding: 0 15px;
+    font-size: 12px;
+}
+
+.mensaje-instrucciones{
+    color: #555;
+    text-align: center;
+    
+}
+
+.mensaje-usuario{
+    background-color: orange;
+    padding: 0px 15px;
+    padding-left: 15px;
+    width: 65%;
+    align-self: flex-end;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mensaje-bot{
+    background-color: #91b0cf;
+    padding: 0px 15px;
+    padding-left: 15px;
+    width: 65%;
+    align-self: flex-start;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mensaje-recomendacion{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.mensaje-recomendacion p{
+    color: #555;
+    text-align: center;
+}
+
+.mensaje-recomendacion a{
+    background-color: orange;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+
+.contenedor-input-boton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 13px;
+}
+
+.contenedor-input-boton input{
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 60px);
+    height: 30px;
+    outline: none;
+    border: none;
+    font-size:12px;
+    font-weight: 300px;
+}
+.contenedor-input-boton input::placeholder{
+    padding-left: 5px;
+}
+.contenedor-input-boton i{
+    font-size: 30px;
+    margin-left: 10px;
+    color: #fff;
+}
