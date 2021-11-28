@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+from qr_generator.views import qr_generator
 
 urlpatterns = [
-    path('', include(('orders.urls', 'orders'), namespace='orders')),
+    path('', qr_generator),
+    path('orders/', include(('orders.urls', 'orders'), namespace='orders')),
     path('admin/', admin.site.urls),
     path('cuenta/', include(('users.urls', 'users'), namespace='users')),
     path('cuenta/', include('django.contrib.auth.urls')),

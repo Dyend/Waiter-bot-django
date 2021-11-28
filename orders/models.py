@@ -37,6 +37,14 @@ class Mesa(models.Model):
     def __str__(self) -> str:
         return str(self.numero)
 
+    def total(self, pedidos=None):
+        if pedidos == None:
+            pedidos = Pedido.objects.filter(mesa=self.id).select_related('plato')
+        total = 0
+        for pedido in pedidos:
+            total = pedido.plato.precio.amount + total
+        return total 
+
     objects = models.Manager()
 
 # Representa un cliente de una mesa

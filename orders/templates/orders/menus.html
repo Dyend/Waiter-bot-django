@@ -19,7 +19,7 @@
             <div class="informacion-pedido">
                 <p>{{menu.nombre}}</p>
                 <p>Precio: {{menu.precio}}</p>
-                <a>Agregar</a>
+                <a onclick="agregarProducto(this)" url="{% url 'orders:agregar_pedido' numero_mesa=mesa id_plato=menu.id %}" >Agregar</a>
             </div>
             <div class="contenedor-imagen">
                 <img src="{{ menu.imagen.url }}" alt="">
@@ -37,6 +37,13 @@
     {% include 'orders/plato.html' %}
     {% endwith %}
     {% endfor %}
+</div>
+
+<div class="total-mesa">
+
+    <p id="total">total: </p>
+    <a onclick="pedirCuenta()"> Pedir cuenta</a>
+
 </div>
 
 
@@ -72,7 +79,7 @@
                 <p id="ingredientes-producto-modal" class="ingredientes"></p>
                 <p id="descripcion-producto-modal" class="descripcion-plato"></p>
                 <div class="botones-modal">
-                    <a id="agregar-producto-modal" onclick="agregarProducto(this)">Agregar</a>
+                    <a id="agregar-producto-modal" onclick="agregarProducto(this)" modal="true" >Agregar</a>
                     <a onclick="handleOpenModal()">Salir</a>
                 </div>
         </div>
@@ -125,6 +132,8 @@
             boton_modal.setAttributeNode(att);
             boton_modal.addEventListener("click", loadModalData);
             div.appendChild(boton_modal);
+
+
         }
         mensajes.scrollTop = mensajes.scrollHeight;
     }
@@ -170,14 +179,16 @@
         $.ajax({
             url: e.getAttribute("url"),
             type: 'GET',
-            dataType: "html",
+            dataType: "json",
             success: function (data) {
 
                 // add product to list
                 console.log(data);
-                document.getElementById("contenedor-pedidos-mesa").innerHTML = document.getElementById("contenedor-pedidos-mesa").innerHTML + data;
-                handleOpenModal();
-                
+                document.getElementById("contenedor-pedidos-mesa").innerHTML = document.getElementById("contenedor-pedidos-mesa").innerHTML + data["html"];
+                if(e.getAttribute("modal")){
+                    handleOpenModal();
+                }
+                document.getElementById("total").textContent = "Total: " + formatProductPrice(data["total"])
             }
         });
 
@@ -195,6 +206,16 @@
         document.getElementById("ingredientes-producto-modal").innerText = ("ingredientes:" + menu.ingredientes).replace(",", ", ");
         document.getElementById("agregar-producto-modal").setAttribute("url", menu.url);
     }
+
+    function pedirCuenta(){
+        if(confirm("¿Deséa pasar al portal de pago? No podrá volver a hacer pedidos.")){
+            window.location.href = "{% url 'orders:portal_pago' numero_mesa=mesa %}";
+        }
+
+    }
+
+
+    document.getElementById("total").textContent = "Total: " + formatProductPrice("{{total}}");
 
 </script>
 
