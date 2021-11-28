@@ -1,3 +1,4 @@
+from enum import unique
 from django.db import models
 from djmoney.models.fields import MoneyField
 from djmoney.money import Money
@@ -16,7 +17,17 @@ class Menu(models.Model):
             MinMoneyValidator(10),
         ]
     )
+    imagen = models.ImageField(null=True, blank=True)
     objects = models.Manager()
+    def __str__(self) -> str:
+        return self.nombre
+
+class Ingrediente(models.Model):
+
+    nombre = models.CharField(max_length=50, unique=True)
+    menus = models.ManyToManyField('orders.Menu')
+    def __str__(self) -> str:
+        return self.nombre
 
 class Mesa(models.Model):
     numero = models.IntegerField(default=0, unique=True)

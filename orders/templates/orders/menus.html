@@ -2,9 +2,9 @@
 
 {% block extrahead %}
 {%load static %}
-    <link type="text/css" rel="stylesheet" href="{% static 'css/menus.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'css/lightslider.css' %}" /> 
-    <script src="{% static 'javascript/lightslider.js' %}"></script>
+<link type="text/css" rel="stylesheet" href="{% static 'css/menus.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'css/lightslider.css' %}" />
+<script src="{% static 'javascript/lightslider.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -14,160 +14,149 @@
         <i class="fas fa-arrow-right"></i>
     </div>
     <div class="contenedor-pedidos" id="adaptive">
+        {% for menu in menus %}
         <div class="contenedor-pedido">
             <div class="informacion-pedido">
-                <p>Lomo Saltado</p>
-                <p>Precio: $14.990</p>
+                <p>{{menu.nombre}}</p>
+                <p>Precio: {{menu.precio}}</p>
                 <a>Agregar</a>
             </div>
             <div class="contenedor-imagen">
-                <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
+                <img src="{{ menu.imagen.url }}" alt="">
             </div>
-        </div>
-        
-
-        <!-- {% for pedido in pedidos%}
-        <div class="contenedor-pedido">
-            <div class="informacion-pedido">
-                <p>Nombre</p>
-                <p>cantidad</p>
-                <p>precio unitario</p>
-            </div>
-            <div class="contenedor-imagen">
-                <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
-            </div>
-        </div>
-        {% endfor %} -->
-        
-    </div>
-    <!-- <div class="contenedor-titulo-platos-pedidos">
-        <h1>Platos Seleccionados</h1>
-        <p>Total: $19.990</p>
-    </div>
-    <div class="menus">
-        {% for menu in menus %}
-        <div>
-            <p>Nombre</p>
-            <p>precio unitario</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam facere sunt blanditiis praesentium
-                delectus cum fuga molestias quod dolore nobis.</p>
-            <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
-            <a href="">Pedir</a>
         </div>
         {% endfor %}
-    </div> -->
 
-    <!-- <div class="contenedor-titulo-platos-pedidos">
-        <h1>Platos Seleccionados</h1>
-        <p>Total: $19.990</p>
     </div>
-    <div class="menus">
-        <div>
-            <p>Nombre</p>
-            <p>precio unitario</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam facere sunt blanditiis praesentium
-                delectus cum fuga molestias quod dolore nobis.</p>
-            <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
-            <a href="">Pedir</a>
-        </div>
-       
-    </div> -->
 </div>
+
+
+<div id="contenedor-pedidos-mesa">
+    {% for pedido in pedidos%}
+    {% with menu=pedido.plato %}
+    {% include 'orders/plato.html' %}
+    {% endwith %}
+    {% endfor %}
+</div>
+
 
 <div class="boton-chat" onclick="chatOpenHandler(this)">
 </div>
 
-<div class="contenedor-principal-chat" >
+<div class="contenedor-principal-chat">
     <i class="fas fa-times-circle boton-cerrar" onclick="chatCloseHandler(this)"></i>
     <div class="mensajes">
         <div class="mensaje-instrucciones">
             <p>
-                Bienvenido a "Lineas de Nazca", para pedir ingresa tus ingredientes favoritos separados por una coma. Ejemplo: carne, pimienta, papas, etc...
+                Bienvenido a "Lineas de Nazca", para pedir ingresa tus ingredientes favoritos separados por una coma.
+                Ejemplo: ingredientes carne, pimienta, papas, etc...
             </p>
-        </div>
-        <div class="mensaje-usuario">
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae dolorum corporis eos rem assumenda reprehenderit sequi soluta eaque architecto veritatis optio et dolor nemo veniam aliquam, libero molestiae. At, ullam.
-            </p>
-        </div>
-        <div class="mensaje-usuario">
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae dolorum corporis eos rem assumenda reprehenderit sequi soluta eaque architecto veritatis optio et dolor nemo veniam aliquam, libero molestiae. At, ullam.
-            </p>
-        </div>
-        <div class="mensaje-bot">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos vero eligendi expedita similique beatae dicta ratione sapiente consequatur? Esse dolorem laborum laudantium tenetur, necessitatibus ut maiores reiciendis recusandae fugiat tempore!
-            </p>
-        </div>
-        <div class="mensaje-usuario">
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae dolorum corporis eos rem assumenda reprehenderit sequi soluta eaque architecto veritatis optio et dolor nemo veniam aliquam, libero molestiae. At, ullam.
-            </p>
-        </div>
-        <div class="mensaje-bot">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos vero eligendi expedita similique beatae dicta ratione sapiente consequatur? Esse dolorem laborum laudantium tenetur, necessitatibus ut maiores reiciendis recusandae fugiat tempore!
-            </p>
-        </div>
-        <div class="mensaje-recomendacion">
-            <p>
-                Te recomiendo el siguiente plato
-            </p>
-            <a onclick="handleOpenModal()">Ver plato</a>
         </div>
     </div>
     <div class="contenedor-input-boton">
-        <input type="text" name="" id="" placeholder="Ingresa un mensaje">
-        <i class="fas fa-play"></i>
+        <input type="text" id="text_to_bot" placeholder="Ingresa un mensaje">
+        <i class="fas fa-play" onclick="sugerencia()"></i>
     </div>
-    
-    
+
+
 </div>
 
 <div class="contendor-modal">
     <div class="cuerpo-modal">
         <div class="contenedor-imagen">
-            <img src="https://cl.buscafs.com/www.levelup.com/public/uploads/images/535014_832x554.jpg" alt="">
+            <img id="imagen-producto-modal" src="" alt="">
         </div>
         <div class="informacion-pedido pedido-modal">
-            <h3>Lomo Saltado</h6>
-            <p class="precio">Precio: $14.990</p>
-            <p class="ingredientes">ingredientes: Carne, Papas Fritas, Cebolla Morada, Ajo, Sal, Arroz y Choclo Peruano</p>
-            <p class="descripcion-plato">Descripción: Exquisito plato típico Peruano, preparado con el mejor lomo del mercado. La mezcla de la carne con la cebolla morada y el ajo le da un toque único, clásico de la cocina del Perú</p>
-            <div class="botones-modal">
-                <a>Agregar</a>
-                <a onclick="handleOpenModal()">Salir</a>
-            </div>
+            <h3 id="nombre-producto-modal"></h6>
+                <p id="precio-producto-modal" class="precio"></p>
+                <p id="ingredientes-producto-modal" class="ingredientes"></p>
+                <p id="descripcion-producto-modal" class="descripcion-plato"></p>
+                <div class="botones-modal">
+                    <a id="agregar-producto-modal" onclick="agregarProducto(this)">Agregar</a>
+                    <a onclick="handleOpenModal()">Salir</a>
+                </div>
         </div>
-        
+
     </div>
 </div>
-
 <script>
-    function loadForm() {
-        var btn = $(this);
-        $.ajax({
-            url: btn.attr("data-url"),
-            type: 'get',
-            dataType: 'json',
-            beforeSend: function () {
-                $("#modal-horario").addClass("show");
-                $(document.body).addClass("body-not-scroll");
-            },
-            success: function (data) {
-                setModalFormHandler(data);
+    function formatProductPrice(product_price) {
+        var interval = 3;
+        var digits = String(product_price).split('').reverse();
+        var output = [];
+
+        digits.forEach(function (digit, index, digits) {
+            output.push(digit);
+            if ((index + 1) % interval === 0 && (index + 1) < digits.length) {
+                output.push('.');
             }
         });
-    };
+        return "$" + output.reverse().join('');
 
-    function chatOpenHandler(e){
+    }
+
+    function transformToNumber(precio) {
+        return parseInt(precio.replace('$', '').replace('.', ''));
+    }
+</script>
+<script>
+
+    document.getElementById("text_to_bot").addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            sugerencia();
+        }
+    });
+
+    function addInputToChat(data) {
+        var div = document.createElement("div");
+        div.className = data["tipo"];
+        texto = document.createElement("p")
+        texto.appendChild(document.createTextNode(data["respuesta"]));
+        div.appendChild(texto);
+        var mensajes = document.getElementsByClassName("mensajes")[0]
+        mensajes.appendChild(div);
+        mensajes.scrollTop = mensajes.scrollHeight;
+        if (data["tipo"] === "mensaje-recomendacion"){
+            var boton_modal = document.createElement("a");
+            var att = document.createAttribute("menu");
+            boton_modal.appendChild(document.createTextNode("Ver plato"));
+            att.value = JSON.stringify(data["menu"]);
+            boton_modal.setAttributeNode(att);
+            boton_modal.addEventListener("click", loadModalData);
+            div.appendChild(boton_modal);
+        }
+        mensajes.scrollTop = mensajes.scrollHeight;
+    }
+
+
+    function sugerencia() {
+        $.ajax({
+            url: "{% url 'orders:sugerencia' id_mesa=mesa %}",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                "text_to_bot": $("#text_to_bot").val(),
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function (data) {
+                // add user input
+                addInputToChat({"tipo": "mensaje-usuario", "respuesta": $("#text_to_bot").val()})
+                $("#text_to_bot").val("");
+                addInputToChat(data);
+
+            }
+        });
+    }
+
+
+    function chatOpenHandler(e) {
         var flip = 0;
         $(e).toggle();
         $(".contenedor-principal-chat").toggle("slow");
     }
 
-    function chatCloseHandler(e){
+    function chatCloseHandler(e) {
         var flip = 0;
         $(".contenedor-principal-chat").toggle();
         $(".boton-chat").toggle("slow");
@@ -177,20 +166,50 @@
         $(".contenedor-principal-chat").toggle("fast");
     }
 
+    function agregarProducto(e){
+        $.ajax({
+            url: e.getAttribute("url"),
+            type: 'GET',
+            dataType: "html",
+            success: function (data) {
+
+                // add product to list
+                console.log(data);
+                document.getElementById("contenedor-pedidos-mesa").innerHTML = document.getElementById("contenedor-pedidos-mesa").innerHTML + data;
+                handleOpenModal();
+                
+            }
+        });
+
+    }
+
+
+
+    function loadModalData(e) {
+        handleOpenModal();
+        var menu = JSON.parse(e.target.getAttribute("menu"));
+        document.getElementById("nombre-producto-modal").innerText = menu.nombre;
+        document.getElementById("descripcion-producto-modal").innerText = "Descripción:" + menu.descripcion;
+        document.getElementById("imagen-producto-modal").src = menu.imagen;
+        document.getElementById("precio-producto-modal").innerText = formatProductPrice(menu.precio);
+        document.getElementById("ingredientes-producto-modal").innerText = ("ingredientes:" + menu.ingredientes).replace(",", ", ");
+        document.getElementById("agregar-producto-modal").setAttribute("url", menu.url);
+    }
+
 </script>
 
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#adaptive').lightSlider({
-            adaptiveHeight:true,
-            item:1,
-            slideMargin:20,
-            loop:true,
-            enableDrag:false
+            adaptiveHeight: true,
+            item: 1,
+            slideMargin: 20,
+            loop: true,
+            enableDrag: false
         });
     });
-    </script>
+</script>
 
 
 

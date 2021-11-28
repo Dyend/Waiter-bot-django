@@ -34,6 +34,7 @@ def qr_generator(request):
                 img.save(stream)
                 context["svg"] = stream.getvalue().decode()
                 context['mesa'] = mesa.numero
+                print(url)
                 return render(request, 'qr_generator/qr_generado.html', context)
             else:
                 # retornar que no se encontro una mesa disponible

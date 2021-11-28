@@ -9,6 +9,9 @@ django-debug-toolbar = "*"
 django-money = "*"
 qrcode = "*"
 pyjwt = "*"
+nltk = "*"
+pillow = "*"
+django-admin-thumbnails = "*"
 
 [dev-packages]
 
