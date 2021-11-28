@@ -42,7 +42,7 @@ pairs = [
     [
         r"ayuda(.*)|instrucciones(.*)",
         [
-            "-Instruccioens -1 para xd \n -2 para xd2 \n -3 para xd3"]
+            "Instrucciones: Para que pueda ofrecerle un menu de su preferencia porfavor ingrese sus ingredientes favoritos separados por una coma. Ejemplo: ingredientes carne, pimienta, papas, etc.."]
     ],
     [
         r"ingredientes (.*)",
