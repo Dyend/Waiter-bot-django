@@ -31,7 +31,11 @@
 </div>
 
 
+
 <div id="contenedor-pedidos-mesa">
+    <div class="contenedor-titulo">
+        <h1>Platos pedidos</h1>
+    </div>
     {% for pedido in pedidos%}
     {% with menu=pedido.plato %}
     {% include 'orders/plato.html' %}

@@ -2,21 +2,29 @@
 
 {% block extrahead %}
 {%load static %}
-
+<link type="text/css" rel="stylesheet" href="{% static 'css/menus.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<div>
-    <h3>
-        Total: {{total}}
-    </h3>
-    <form action="" method="post">
-        {% csrf_token %}
-        <button type = "submit">
-            Pagar
-        </button>
-    </form>
+<div class="contenedor-pricipal-pago-total">
+    
+    <div class="contenedor-titulo">
+        <h1>Pagar tus pedidos</h1>
+    </div>
+    <div class="contendor-pago-total">
+        
+        <h3>
+            Total: {{total}}
+        </h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            <button type = "submit">
+                Pagar
+            </button>
+        </form>
+    </div>
+    
 
 </div>
 
